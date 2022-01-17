@@ -2,7 +2,7 @@ using EnergeticDevelopment.Resources;
 
 namespace EnergeticDevelopment.EnergyConsumers
 {
-    public abstract class Consumer : IConsumer
+    public class Consumer : IConsumer
     {
         private readonly double _amount;
 

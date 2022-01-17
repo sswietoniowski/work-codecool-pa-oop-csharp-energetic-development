@@ -16,12 +16,13 @@ namespace EnergeticDevelopment
             
             resourceStorage.AddMine(mineFactory.Create(MineType.Uranium));
             resourceStorage.AddPlant(plantFactory.Create(PlantType.Nuclear));
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 9; i++)
             {
                 resourceStorage.AddPlant(plantFactory.Create(PlantType.Coal));
             }
             // resourceStorage.AddPlant(plantFactory.Create(PlantType.Solar));
-            resourceStorage.AddConsumers(new NewYork());
+            var newYork = new Consumer(10_000);
+            resourceStorage.AddConsumers(newYork);
 
             // test whether this system could work for a given time
             try
