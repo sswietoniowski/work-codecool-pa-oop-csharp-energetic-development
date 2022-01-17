@@ -15,8 +15,12 @@ namespace EnergeticDevelopment
             PlantFactory plantFactory = new PlantFactory();
             
             resourceStorage.AddMine(mineFactory.Create(MineType.Uranium));
+            for (int i = 0; i < 100; i++)
+            {
+                resourceStorage.AddMine(mineFactory.Create(MineType.Coal));
+            }
             resourceStorage.AddPlant(plantFactory.Create(PlantType.Nuclear));
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 10; i++)
             {
                 resourceStorage.AddPlant(plantFactory.Create(PlantType.Coal));
             }
