@@ -4,6 +4,7 @@ using EnergeticDevelopment.EnergyConsumers;
 using EnergeticDevelopment.Mines;
 using EnergeticDevelopment.PowerPlants;
 using EnergeticDevelopment.Resources;
+using EnergeticDevelopment.Units;
 
 namespace EnergeticDevelopment
 {
@@ -42,6 +43,8 @@ namespace EnergeticDevelopment
             Produce();
 
             Consume();
+
+            Summary();
         }
         
         private void Mine()
@@ -50,13 +53,25 @@ namespace EnergeticDevelopment
             {
                 var resource = mine.Produce();
 
-                Console.WriteLine($"Mine: {mine.MineType} Produced: {resource}");
+                //Console.WriteLine($"Mine: {mine.MineType} Produced: {resource}");
 
-                var totalAmount = _resources?[resource.ResourceType] ?? 0;
-                totalAmount += resource.Amount;
-                _resources![resource.ResourceType] = totalAmount;
                 
-                Console.WriteLine($"Resource Type: {resource.ResourceType}, Total Amount: {totalAmount}");
+                var totalAmount = 0.0;
+                if (_resources.ContainsKey(resource.ResourceType))
+                {
+                    totalAmount = _resources[resource.ResourceType];
+                }
+                totalAmount += resource.Amount;
+                if (_resources.ContainsKey(resource.ResourceType))
+                {
+                    _resources[resource.ResourceType] = totalAmount;
+                }
+                else
+                {
+                    _resources.Add(resource.ResourceType, totalAmount);
+                }
+
+                //Console.WriteLine($"Resource Type: {resource.ResourceType}, Total Amount: {totalAmount}");
             }
         }
         
@@ -66,7 +81,7 @@ namespace EnergeticDevelopment
             {
                 var resourceConsumed = plant.Consume();
 
-                Console.WriteLine($"Plant: {plant.PlantType} Requires: {resourceConsumed}");
+                //Console.WriteLine($"Plant: {plant.PlantType} Requires: {resourceConsumed}");
 
                 if (_resources.ContainsKey(resourceConsumed.ResourceType))
                 {
@@ -75,14 +90,20 @@ namespace EnergeticDevelopment
                     {
                         _resources[resourceConsumed.ResourceType] -= resourceConsumed.Amount;
                         var resourceProduced = plant.Produce();
-                        Console.WriteLine($"Produced: {resourceProduced}");
+                        // Console.WriteLine($"Produced: {resourceProduced}");
                         _energy += resourceProduced.Amount;
-                        Console.WriteLine($"Total energy: {_energy}");
+                        // Console.WriteLine($"Total energy: {_energy}");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Not enough resources, so this plant is not producing energy...");
+                    if (resourceConsumed.ResourceType == ResourceType.Void)
+                    {
+                        var resourceProduced = plant.Produce();
+                        // Console.WriteLine($"Produced: {resourceProduced}");
+                        _energy += resourceProduced.Amount;
+                        // Console.WriteLine($"Total energy: {_energy}");
+                    }
                 }
             }
         }
@@ -93,7 +114,7 @@ namespace EnergeticDevelopment
             {
                 var consumedResource = consumer.Consume();
 
-                Console.WriteLine($"Consumer requires: {consumedResource}");
+                //Console.WriteLine($"Consumer requires: {consumedResource}");
                 
                 if (consumedResource.Amount > _energy)
                 {
@@ -102,8 +123,20 @@ namespace EnergeticDevelopment
 
                 _energy -= consumedResource.Amount;
 
-                Console.WriteLine($"Energy left: {_energy}");
+                //Console.WriteLine($"Energy left: {_energy}");
             }
+        }
+
+        private void Summary()
+        {
+            var unitFactory = new UnitFactory();
+            
+            foreach (var resourceType in _resources.Keys)
+            {
+                Console.WriteLine($"Resource type: {resourceType}, Unit: {unitFactory.Create(resourceType)}, Amount: {_resources[resourceType]} units");
+            }
+
+            Console.WriteLine($"Energy: {_energy}");
         }
     }
 }

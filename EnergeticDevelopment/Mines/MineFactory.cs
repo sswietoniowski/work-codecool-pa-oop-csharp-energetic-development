@@ -4,9 +4,8 @@ namespace EnergeticDevelopment.Mines
 {
     public class MineFactory
     {
-        public IMine Create(MineType mineType)
-        {
-            return mineType switch
+        public IMine Create(MineType mineType) =>
+            mineType switch
             {
                 MineType.Coal => new CoalMine(),
                 MineType.Uranium => new UraniumMine(),
@@ -14,6 +13,5 @@ namespace EnergeticDevelopment.Mines
                 MineType.HadronCollider => new HadronCollider(),
                 _ => throw new ArgumentException($"Unsupported mine type: {mineType}")
             };
-        }
     }
 }

@@ -4,9 +4,8 @@ namespace EnergeticDevelopment.PowerPlants
 {
     public class PlantFactory 
     {
-        public IPlant Create(PlantType plantType)
-        {
-            return plantType switch
+        public IPlant Create(PlantType plantType) =>
+            plantType switch
             {
                 PlantType.Coal => new CoalPlant(),
                 PlantType.Solar => new SolarPlant(),
@@ -15,6 +14,5 @@ namespace EnergeticDevelopment.PowerPlants
                 PlantType.Annihilation => new AnihilationPlant(),
                 _ => throw new ArgumentException($"Unsupported plant type: {plantType}")
             };
-        }
     }
 }
