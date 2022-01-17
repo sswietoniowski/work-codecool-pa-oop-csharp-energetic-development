@@ -25,8 +25,7 @@ namespace EnergeticDevelopment
                 resourceStorage.AddPlant(plantFactory.Create(PlantType.Coal));
             }
             // resourceStorage.AddPlant(plantFactory.Create(PlantType.Solar));
-            var newYork = new Consumer(10_000);
-            resourceStorage.AddConsumers(newYork);
+            resourceStorage.AddConsumers(Consumer.NewYork);
 
             // test whether this system could work for a given time
             try

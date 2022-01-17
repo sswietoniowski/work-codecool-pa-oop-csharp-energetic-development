@@ -4,6 +4,10 @@ namespace EnergeticDevelopment.EnergyConsumers
 {
     public class Consumer : IConsumer
     {
+        public static IConsumer World = new World();
+        public static IConsumer Poland = new Poland();
+        public static IConsumer NewYork = new NewYork();
+        
         private readonly double _amount;
 
         public Consumer(double amount)
