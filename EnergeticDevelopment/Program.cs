@@ -1,6 +1,7 @@
 ﻿using System;
 using EnergeticDevelopment.EnergyConsumers;
 using EnergeticDevelopment.Mines;
+using EnergeticDevelopment.PowerPlants;
 
 namespace EnergeticDevelopment
 {
@@ -24,11 +25,19 @@ namespace EnergeticDevelopment
                 resourceStorage.AddPlant(plantFactory.Create(PlantType.Coal));
             }
             resourceStorage.AddConsumers(new NewYork());
-            
+
             // test whether this system could work for a given time
-            for (int i = 0; i < 30; i++)
+            try
             {
-                resourceStorage.Simulate();
+                for (int i = 1; i <= 30; i++)
+                {
+                    Console.WriteLine($"Day: {i}");
+                    resourceStorage.Simulate();
+                }
+            }
+            catch (BlackoutException exception)
+            {
+                Console.WriteLine("Not enough energy!");
             }
         }
     }

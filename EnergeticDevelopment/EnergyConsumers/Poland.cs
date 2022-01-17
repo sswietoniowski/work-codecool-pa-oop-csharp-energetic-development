@@ -1,13 +1,7 @@
-using EnergeticDevelopment.Resources;
-using EnergeticDevelopment.Units;
-
 namespace EnergeticDevelopment.EnergyConsumers
 {
-    public class Poland : IConsumer
+    public class Poland : Consumer
     {
-        public Resource Consume()
-        {
-            return new Resource(new EnergyUnit(), 40_000);
-        }
+        public Poland() : base(40_000) {}
     }
 }

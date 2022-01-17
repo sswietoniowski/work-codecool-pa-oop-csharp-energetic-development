@@ -3,11 +3,8 @@ using EnergeticDevelopment.Units;
 
 namespace EnergeticDevelopment.Mines
 {
-    public class CoalMine : IMine
+    public class CoalMine : Mine
     {
-        public Resource Produce()
-        {
-            return new Resource(new CoalUnit(), 40);
-        }
+        public CoalMine() : base(MineType.Coal, ResourceType.Coal, 40) {}
     }
 }

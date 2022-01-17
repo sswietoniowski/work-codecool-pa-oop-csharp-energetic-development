@@ -1,18 +1,10 @@
 using EnergeticDevelopment.Resources;
 using EnergeticDevelopment.Units;
 
-namespace EnergeticDevelopment.Mines
+namespace EnergeticDevelopment.PowerPlants
 {
-    public class FusionPlant : IPlant
+    public class FusionPlant : Plant
     {
-        public Resource Consume()
-        {
-            return new Resource(new HeliumUnit(), 1);
-        }
-
-        public Resource Produce()
-        {
-            return new Resource(new EnergyUnit(), 20_000);
-        }
+        public FusionPlant() : base(PlantType.Fusion, ResourceType.Helium, 1, ResourceType.Energy, 20_000) {}
     }
 }

@@ -1,18 +1,9 @@
 using EnergeticDevelopment.Resources;
-using EnergeticDevelopment.Units;
 
-namespace EnergeticDevelopment.Mines
+namespace EnergeticDevelopment.PowerPlants
 {
-    public class SolarPlant : IPlant
+    public class SolarPlant : Plant
     {
-        public Resource Consume()
-        {
-            return new NoResource();
-        }
-
-        public Resource Produce()
-        {
-            return new Resource(new EnergyUnit(), 2);
-        }
+        public SolarPlant() : base(PlantType.Solar, ResourceType.Void, 0, ResourceType.Energy, 2) {}
     }
 }

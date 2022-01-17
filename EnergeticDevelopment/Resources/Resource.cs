@@ -5,13 +5,18 @@ namespace EnergeticDevelopment.Resources
 {
     public class Resource
     {
-        public IUnit Unit { get; }
-        public double Value { get; }
+        public ResourceType ResourceType { get; }
+        public double Amount { get; }
 
-        public Resource(IUnit unit, double value)
+        public Resource(ResourceType resourceType, double amount)
         {
-            Unit = unit;
-            Value = value;
+            ResourceType = resourceType;
+            Amount = amount;
+        }
+
+        public override string ToString()
+        {
+            return $"(resource: {ResourceType}, amount: {Amount})";
         }
     }
 }

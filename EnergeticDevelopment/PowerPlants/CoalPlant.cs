@@ -1,18 +1,11 @@
+using EnergeticDevelopment.Mines;
 using EnergeticDevelopment.Resources;
 using EnergeticDevelopment.Units;
 
-namespace EnergeticDevelopment.Mines
+namespace EnergeticDevelopment.PowerPlants
 {
-    public class CoalPlant : IPlant
+    public class CoalPlant : Plant
     {
-        public Resource Consume()
-        {
-            return new Resource(new CoalUnit(), 100);
-        }
-
-        public Resource Produce()
-        {
-            return new Resource(new EnergyUnit(), 7);
-        }
+        public CoalPlant() : base(PlantType.Coal, ResourceType.Coal, 100, ResourceType.Energy, 7) {}
     }
 }

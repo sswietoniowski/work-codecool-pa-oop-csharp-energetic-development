@@ -3,11 +3,8 @@ using EnergeticDevelopment.Units;
 
 namespace EnergeticDevelopment.Mines
 {
-    public class HadronCollider : IMine
+    public class HadronCollider : Mine
     {
-        public Resource Produce()
-        {
-            return new Resource(new AntimatterUnit(), 1 / 7.0);
-        }
+        public HadronCollider() : base(MineType.HadronCollider, ResourceType.Antimatter, 1 / 7.0) {}
     }
 }

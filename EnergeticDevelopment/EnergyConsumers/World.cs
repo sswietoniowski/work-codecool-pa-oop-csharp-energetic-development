@@ -1,13 +1,7 @@
-using EnergeticDevelopment.Resources;
-using EnergeticDevelopment.Units;
-
 namespace EnergeticDevelopment.EnergyConsumers
 {
-    public class World : IConsumer
+    public class World : Consumer
     {
-        public Resource Consume()
-        {
-            return new Resource(new EnergyUnit(), 6_000_000);
-        }
+        public World() : base(6_000_000) {}
     }
 }

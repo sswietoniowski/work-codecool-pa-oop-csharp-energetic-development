@@ -3,11 +3,8 @@ using EnergeticDevelopment.Units;
 
 namespace EnergeticDevelopment.Mines
 {
-    public class MoonMine : IMine
+    public class MoonMine : Mine
     {
-        public Resource Produce()
-        {
-            return new Resource(new HeliumUnit(), 10);
-        }
+        public MoonMine() : base(MineType.Moon, ResourceType.Helium, 10) {}
     }
 }

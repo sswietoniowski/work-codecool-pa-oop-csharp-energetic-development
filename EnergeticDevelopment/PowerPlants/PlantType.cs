@@ -1,4 +1,4 @@
-namespace EnergeticDevelopment.Mines
+namespace EnergeticDevelopment.PowerPlants
 {
     public enum PlantType
     {

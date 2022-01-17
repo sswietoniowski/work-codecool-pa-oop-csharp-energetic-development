@@ -1,18 +1,10 @@
+using EnergeticDevelopment.Mines;
 using EnergeticDevelopment.Resources;
-using EnergeticDevelopment.Units;
 
-namespace EnergeticDevelopment.Mines
+namespace EnergeticDevelopment.PowerPlants
 {
-    public class NuclearPlant : IPlant
+    public class NuclearPlant : Plant
     {
-        public Resource Consume()
-        {
-            return new Resource(new UraniumUnit(), 1);
-        }
-
-        public Resource Produce()
-        {
-            return new Resource(new EnergyUnit(), 10_000);
-        }
+        public NuclearPlant() : base(PlantType.Nuclear, ResourceType.Uranium, 1, ResourceType.Energy, 10_000) {}
     }
 }

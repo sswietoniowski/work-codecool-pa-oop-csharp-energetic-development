@@ -1,18 +1,10 @@
 using EnergeticDevelopment.Resources;
 using EnergeticDevelopment.Units;
 
-namespace EnergeticDevelopment.Mines
+namespace EnergeticDevelopment.PowerPlants
 {
-    public class AnihilationPlant : IPlant
+    public class AnihilationPlant : Plant
     {
-        public Resource Consume()
-        {
-            return new Resource(new AntimatterUnit(), 1);
-        }
-
-        public Resource Produce()
-        {
-            return new Resource(new EnergyUnit(), 25_000);
-        }
+        public AnihilationPlant() : base(PlantType.Annihilation, ResourceType.Antimatter, 1, ResourceType.Energy, 25_000) {}
     }
 }

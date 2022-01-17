@@ -5,6 +5,8 @@ namespace EnergeticDevelopment.Mines
 {
     public interface IMine
     {
+        public MineType MineType { get; }
+        
         Resource Produce();
     }
 }

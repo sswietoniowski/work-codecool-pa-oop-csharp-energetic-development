@@ -1,6 +1,6 @@
 using System;
 
-namespace EnergeticDevelopment.Mines
+namespace EnergeticDevelopment.PowerPlants
 {
     public class PlantFactory 
     {
